@@ -68,7 +68,7 @@ const OurGallery = () => {
 
   return (
     <>
-      <div className="pt-20">
+      <div className="pt-20 md:mb-0 mb-10">
         <div className="mx-auto w-full max-w-xs relative flex flex-col items-center justify-center text-center overflow-visible">
           <h3 className="text-4xl font-bold">Our Gallery</h3>
           <div className="w-full mt-2 relative flex flex-col items-center justify-center">
@@ -99,10 +99,7 @@ const OurGallery = () => {
                   <img
                     src={url}
                     alt={`Slide ${i + 1}`}
-                    className="object-cover w-full h-full rounded-lg shadow-lg"
-                    style={{
-                      boxShadow: "10px -14px 60px 4px rgba(0,0,0,0.1)",
-                    }}
+                    className="object-cover w-full h-full rounded-lg shadow-lg border-2 border-slate-400"
                   />
                 </div>
               ))}
