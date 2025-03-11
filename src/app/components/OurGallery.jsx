@@ -1,8 +1,11 @@
+"use client"; // Ensures this component only runs on the client
+
 import React, { useEffect, useState, useRef } from "react";
 
 const OurGallery = () => {
   const [activeSlide, setActiveSlide] = useState(0);
-  const slides = 15; // Total number of slides
+  const [windowWidth, setWindowWidth] = useState(1024); // Default desktop width
+  const slides = 15;
   const intervalRef = useRef(null);
 
   const imageUrls = [
@@ -25,12 +28,24 @@ const OurGallery = () => {
   ];
 
   useEffect(() => {
-    startAutoSlide();
-    return () => clearInterval(intervalRef.current);
+    // Ensure this only runs in the browser
+    if (typeof window !== "undefined") {
+      setWindowWidth(window.innerWidth);
+
+      const handleResize = () => setWindowWidth(window.innerWidth);
+      window.addEventListener("resize", handleResize);
+
+      startAutoSlide();
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+        if (intervalRef.current) clearInterval(intervalRef.current);
+      };
+    }
   }, []);
 
   const startAutoSlide = () => {
-    clearInterval(intervalRef.current);
+    if (intervalRef.current) clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slides);
     }, 3000);
@@ -61,11 +76,10 @@ const OurGallery = () => {
             <div className="absolute inset-x-auto top-0 bg-gradient-to-r from-transparent via-green-500 to-transparent h-px w-full"></div>
             <div className="absolute inset-x-auto top-0 bg-gradient-to-r from-transparent via-green-400 to-transparent h-[5px] w-1/2 blur-sm"></div>
             <div className="absolute inset-x-auto top-0 bg-gradient-to-r from-transparent via-green-400 to-transparent h-px w-1/2"></div>
-            <div className="absolute inset-0 w-full h-full bg-background [mask-image:radial-gradient(50%_200px_at_top,transparent_20%,white)]"></div>
           </div>
-          <span className="absolute -z-[1] backdrop-blur-sm inset-0 w-full h-full flex before:content-[''] before:h-3/4 before:w-full before:bg-gradient-to-r before:from-black before:to-purple-600 before:blur-[90px] after:content-[''] after:h-1/2 after:w-full after:bg-gradient-to-br after:from-cyan-400 after:to-sky-300 after:blur-[90px]"></span>
         </div>
       </div>
+
       <section className="md:p-8 md:mb-16">
         <div className="w-full mx-auto relative group p-5 pb-10 rounded-2xl md:pr-20 md:pl-20">
           <div className="relative overflow-hidden rounded-lg md:p-5">
@@ -73,7 +87,7 @@ const OurGallery = () => {
               className="flex md:gap-3 transition-transform duration-500 ease-in-out"
               style={{
                 transform: `translateX(-${
-                  (activeSlide * 100) / (window.innerWidth < 768 ? 1 : 3)
+                  (activeSlide * 100) / (windowWidth < 768 ? 1 : 3)
                 }%)`,
               }}
             >
@@ -95,20 +109,22 @@ const OurGallery = () => {
             </div>
           </div>
 
+          {/* Buttons (Prev & Next) */}
           <button
             onClick={handlePrev}
-            className="absolute top-1/2 left-4 -translate-y-1/2 bg-slate-900 text-slate-100 hover:bg-slate-700 rounded-full p-2.5"
+            className="absolute cursor-pointer top-1/2 left-4 -translate-y-1/2 bg-slate-900 text-white hover:bg-slate-700 rounded-full p-3 text-xl"
           >
             &#8249;
           </button>
 
           <button
             onClick={handleNext}
-            className="absolute top-1/2 right-4 -translate-y-1/2 bg-slate-900 text-slate-100 hover:bg-slate-700 rounded-full p-2.5"
+            className="absolute top-1/2 cursor-pointer right-4 -translate-y-1/2 bg-slate-900 text-white hover:bg-slate-700 rounded-full p-3 text-xl"
           >
             &#8250;
           </button>
 
+          {/* Dots Navigation */}
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
             {[...Array(slides)].map((_, i) => (
               <button
