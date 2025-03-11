@@ -18,7 +18,7 @@ function WhyChooseUs() {
         {/* For Why Choose Us Blocks */}
         <div className="inline-block md:flex md:gap-5 justify-center md:p-14 p-5 mt-5 md:mt-5">
           {/*Block 1*/}
-          <div className="w-full mb-5 md:mb-0 border bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden transition-transform transition-shadow hover:scale-105 hover:shadow-lg">
+          <div className="w-full rounded-md mb-5 md:mb-0 border bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden transition-transform transition-shadow hover:scale-105 hover:shadow-lg">
             <div className="w-24 h-24 bg-green-500 rounded-full absolute -right-5 -top-7">
               <p className="absolute bottom-6 left-7 text-white text-2xl">01</p>
             </div>
@@ -31,7 +31,7 @@ function WhyChooseUs() {
             </p>
           </div>
           {/*Block 2*/}
-          <div className="w-full mb-5 md:mb-0 border bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden transition-transform transition-shadow hover:scale-105 hover:shadow-lg">
+          <div className="w-full rounded-md mb-5 md:mb-0 border bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden transition-transform transition-shadow hover:scale-105 hover:shadow-lg">
             <div className="w-24 h-24 bg-green-500 rounded-full absolute -right-5 -top-7">
               <p className="absolute bottom-6 left-7 text-white text-2xl">02</p>
             </div>
@@ -44,7 +44,7 @@ function WhyChooseUs() {
             </p>
           </div>
           {/*Block 3*/}
-          <div className="w-full mb-5 md:mb-0 border bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden transition-transform transition-shadow hover:scale-105 hover:shadow-lg">
+          <div className="w-full rounded-md mb-5 md:mb-0 border bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden transition-transform transition-shadow hover:scale-105 hover:shadow-lg">
             <div className="w-24 h-24 bg-green-500 rounded-full absolute -right-5 -top-7">
               <p className="absolute bottom-6 left-7 text-white text-2xl">03</p>
             </div>
@@ -57,7 +57,7 @@ function WhyChooseUs() {
             </p>
           </div>
           {/*Block 4*/}
-          <div className="w-full border bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden transition-transform transition-shadow hover:scale-105 hover:shadow-lg">
+          <div className="w-full rounded-md border bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden transition-transform transition-shadow hover:scale-105 hover:shadow-lg">
             <div className="w-24 h-24 bg-green-500 rounded-full absolute -right-5 -top-7">
               <p className="absolute bottom-6 left-7 text-white text-2xl">04</p>
             </div>
